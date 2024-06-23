@@ -5,6 +5,9 @@ import os
 vectorizer_path = r'C:\Users\MRS AKINBUSOYE\PycharmProjects\ML\email-spam Detection\pythonProject\vectorizer.pkl'
 model_path = r'C:\Users\MRS AKINBUSOYE\PycharmProjects\ML\email-spam Detection\pythonProject\model.pkl'
 
+st.write(f"Vectorizer path: {vectorizer_path}")
+st.write(f"Model path: {model_path}")
+
 # check if the required files exist
 if os.path.exists(vectorizer_path) and os.path.exists(model_path):
 
@@ -30,4 +33,6 @@ if os.path.exists(vectorizer_path) and os.path.exists(model_path):
   else:
    st.header("Spam")
 else:
- st.error("Required files are missing. Ensure 'vectorizer.pkl' and 'model.pkl' are in correct path.")
+ st.error(f"Required files are missing. Ensure 'vectorizer.pkl' and 'model.pkl' are in correct path:\n"
+          f"Vectorizer path: {vectorizer_path}\n"
+          f"Model path: {model_path}")
