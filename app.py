@@ -1,23 +1,14 @@
 import streamlit as st
 import pickle
-import os
 
-vectorizer_path = r'C:\Users\MRS AKINBUSOYE\PycharmProjects\ML\email-spam Detection\pythonProject\vectorizer.pkl'
-model_path = r'C:\Users\MRS AKINBUSOYE\PycharmProjects\ML\email-spam Detection\pythonProject\model.pkl'
 
-st.write(f"Vectorizer path: {vectorizer_path}")
-st.write(f"Model path: {model_path}")
 
-# check if the required files exist
-if os.path.exists(vectorizer_path) and os.path.exists(model_path):
+feature_extraction = pickle.load(open('vectorizer.pkl','rb'))
+model = pickle.load(open('model.pkl','rb'))
+st.title("Email Spam Detection")
+input_email = st.text_input("Enter the message")
 
- feature_extraction = pickle.load(open(vectorizer_path,'rb'))
- model = pickle.load(open(model_path,'rb'))
- st.title("Email Spam Detection")
-
- input_email = st.text_input("Enter the message")
-
- if st.button('Predict'):
+if st.button('Predict'):
 
 
 
@@ -32,7 +23,3 @@ if os.path.exists(vectorizer_path) and os.path.exists(model_path):
    st.header("Not Spam")
   else:
    st.header("Spam")
-else:
- st.error(f"Required files are missing. Ensure 'vectorizer.pkl' and 'model.pkl' are in correct path:\n"
-          f"Vectorizer path: {vectorizer_path}\n"
-          f"Model path: {model_path}")
